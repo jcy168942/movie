@@ -1,0 +1,71 @@
+{
+  "index_patterns": ["auto_complete_movie*"],
+  "template": {
+    "settings": {
+      "index": {
+        "max_ngram_diff": 50
+      },
+      "number_of_shards": 2,
+      "number_of_replicas": 1,
+      "analysis": {
+        "filter": {
+          "suggest_filter": {
+            "type": "edge_ngram",
+            "min_gram": "1",
+            "max_gram": "50"
+          }
+        },
+        "analyzer": {
+          "suggest_search_analyzer": {
+            "type": "custom",
+            "tokenizer": "jaso_search_tokenizer"
+          },
+          "suggest_index_analyzer": {
+            "filter": ["suggest_filter"],
+            "type": "custom",
+            "tokenizer": "jaso_index_tokenizer"
+          }
+        },
+        "tokenizer": {
+          "jaso_index_tokenizer": {
+            "type": "jaso_tokenizer",
+            "chosung": "true",
+            "mistype": "true"
+          },
+          "jaso_search_tokenizer": {
+            "type": "jaso_tokenizer",
+            "chosung": "true",
+            "mistype": "true"
+          }
+        }
+      }
+    },
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "h_movie": {
+          "search_analyzer": "suggest_search_analyzer",
+          "analyzer": "suggest_index_analyzer",
+          "store": true,
+          "type": "text"
+        },
+        "h_movie2": {
+          "search_analyzer": "suggest_search_analyzer",
+          "analyzer": "suggest_index_analyzer",
+          "store": true,
+          "type": "text"
+        }
+      }
+    },
+    "aliases": {
+      "mydata": {}
+    }
+  },
+  "priority": 500,
+  "version": 3,
+  "_meta": {
+    "description": "my custom"
+  }
+}

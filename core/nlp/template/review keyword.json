@@ -1,0 +1,74 @@
+{
+    "index_patterns": ["keyword*"],
+    "template": {
+      "settings": {
+        "number_of_shards": 1
+      },
+      "mappings": {
+        "_source": {
+          "enabled": true
+        },
+        "properties": {
+          "h_movie": {
+            "type": "text"
+          },
+          "h_movie2": {
+            "type": "text"
+          },
+          "genre": {
+            "type": "keyword"
+          },
+          "movie_img": {
+            "type": "keyword"
+          },
+          "nation": {
+            "type": "keyword"
+          },
+          "state": {
+            "type": "keyword"
+          },
+          "movie_actor": {
+            "type": "keyword"
+          },
+          "movie_director": {
+            "type": "keyword"
+          },
+          "review_score": {
+            "type": "integer"
+          },
+          "review_id": {
+            "type": "keyword"
+          },
+          "review_txt": {
+            "type": "text"
+          },
+          "max_sum_sim_10": {
+            "type": "text"
+          },
+          "max_sum_sim_20": {
+            "type": "text"
+          },
+          "mmr_0.2": {
+            "type": "text"
+          },
+          "mmr_0.5'": {
+            "type": "text"
+          },
+          "mmr_0.7": {
+            "type": "text"
+          },
+          "mmr_0.9": {
+            "type": "text"
+          }
+        }
+      },
+      "aliases": {
+        "mydata": { }
+      }
+    },
+    "priority": 500,
+    "version": 3,
+    "_meta": {
+      "description": "my custom"
+    }
+  }

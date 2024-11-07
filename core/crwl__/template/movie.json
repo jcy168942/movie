@@ -1,0 +1,110 @@
+{
+  "index_patterns": ["movie*"],
+  "template": {
+    "settings": {
+      "index": {
+         "max_ngram_diff": 50
+      },
+      "number_of_shards": 2,
+      "number_of_replicas": 1,
+      "analysis": {
+        "tokenizer": {
+          "my_nori_tokenizer": {
+            "type": "nori_tokenizer",
+            "decompund_mode" : "mixed",
+            "user_dictionary" : "userdic.txt"
+          },
+          "my_ngram_tokenizer": {
+            "type": "ngram",
+            "min_gram": 2,
+            "max_gram": 4,
+            "token_chars": [
+              "letter",
+              "digit"
+            ]
+          }
+        },
+        "analyzer": {
+          "nori": {
+            "tokenizer": "my_nori_tokenizer",
+            "filter": [
+              "nori_posfilter",
+              "nori_readingform",
+              "lowercase",
+              "synonym_filtering"
+            ]
+          },
+          "ngram": {
+            "tokenizer": "my_ngram_tokenizer"
+          }
+        },
+        "filter": {
+          "nori_posfilter": {
+            "type": "nori_part_of_speech",
+            "stoptags": [
+              "E",
+              "IC",
+              "J",
+              "SP",
+              "SSC",
+              "SSO",
+              "SC",
+              "SE"
+            ]
+          },
+          "synonym_filtering": {
+            "type": "synonym",
+            "synonyms_path": "synonym.txt"
+          }
+        }
+      }
+    },
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "h_movie": {
+          "type": "text",
+          "analyzer": "nori",
+          "search_analyzer": "nori"
+        },
+        "h_movie2": {
+          "type": "keyword"
+        },
+        "genre": {
+          "type": "keyword"
+        },
+        "movie_img": {
+          "type": "keyword"
+        },
+        "nation": {
+          "type": "keyword"
+        },
+        "state": {
+          "type": "keyword"
+        },
+        "movie_actor": {
+          "type": "nested"
+        },
+        "movie_director": {
+          "type": "keyword"
+        },
+        "show_time": {
+          "type": "integer"
+        },
+        "opening_date": {
+          "type": "keyword"
+        }
+      }
+    },
+    "aliases": {
+      "mydata": { }
+    }
+  },
+  "priority": 500,
+  "version": 3,
+  "_meta": {
+    "description": "my custom"
+  }
+}
