@@ -1,6 +1,11 @@
 
 # 영화 검색 서비스 - Elasticsearch 기반 검색 페이지 구축
 
+## 프로젝트 notion url
+https://climbing-consonant-0d5.notion.site/Elasticsearch-6ce03943b83c472380229c6700b746be
+
+---
+
 ## 프로젝트 개요
 
 - **프로젝트 기간**: 2022년 9월 5일 ~ 2022년 11월 25일
@@ -61,6 +66,8 @@
 
 ![메인 페이지](https://lh7-us.googleusercontent.com/MQqwX8U9raspbMJTBb0IaajJPcjXzvuMQiFzmevTtLJBtaCROz4eYkoGDhB0hLvaNGoGOr6NIjE_rUl_qg4pzr3dhGyFHODsyK7TFVTx_bKsD1c8uEi0oxkGy0tdxI3nc9doNohsvHhxen1lJ06ny_s)
 
+---
+
 ### 서치 페이지
 
 - **필터링 기능**: 개봉 날짜, 상영시간, 최신순, 평점순 등의 필터를 지원.
@@ -69,6 +76,8 @@
 - **반응형 레이아웃**: 다양한 기기에서의 UI 최적화.
 
 ![서치 페이지](https://lh7-us.googleusercontent.com/xbrLMc1YdLdFGRS9ikXTlQoKQfo51k7T8xW4-6ANLN6FqDbywa1Flxe-QeEQ3ZlUwErLw4CDpekJ2mm-UdokqyRpgT9ai7QvUnY7y3KMaoMMU3ibdYUfqB4C97KKRCvSt4z0Bb09wIc5TjJyzxOQajg)
+
+---
 
 ### 상세 페이지
 
@@ -79,7 +88,8 @@
 - **Graph data modeling**: 영화 전체 노드를 중심으로 그룹(장르, 카테고리 등), 하위 그룹, 영화 노드를 연결하여 영화와 관련된 데이터를 시각화
   (해당 부분은 front-end라이브러리 이슈로 화면에는 보여지지 않습니다.)
 
-![상세 페이지](https://lh7-us.googleusercontent.com/WWzFjvD3Wr9GxbC7nqb59IMShKNa_ddl-yRw5M9f79JJIt3OgfKt_i2SLoYYipktf6p1AjsKzenxGxtwwbphnLbF_sfbzdkDXR0T1yQ4GSYyjFZ9ULXOOY8dJrSmA5rYZqJQH4KXMsjGqG7NY0gAQxI)
+![상세 페이지](https://lh7-us.googleusercontent.com/3LmQ7bA0ccONhBfX2hc6gYWixzyYOWrudC7FXhuEfxgCcgIhEHdTKdYG9IuoDc8RX4ir0T7nXk1S9EBh7FbhrTMSydmQdBnpDJFYekUsIB9D6CPFlUF4sb31eDlpaLx6plyBo0AbB1xeqSfAtN13t6o)
+![상세 페이지](https://lh7-us.googleusercontent.com/n0cdqYc3Tpby_dDDUiWduYJg8d7ICbaIksmj402pk98zcNTzYDxLnIEHSBYuw53V2baCsng-fu3d2jpL-xyeeMXHCDFB0UnrSnqP7QdgzHJpBxWqAuJL9ojHofpNPNUxBLmZluaH8OplXh39vgnEXwQ)
 
 ---
 
