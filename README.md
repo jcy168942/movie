@@ -15,7 +15,7 @@ https://climbing-consonant-0d5.notion.site/Elasticsearch-6ce03943b83c472380229c6
 
 - **Frontend**: React, CSS
 - **Backend**: Node.js, Express
-- **Data Crawling**: KOBIS에서 제공해주는 데이터를 이용하여 Naver Movie크롤링
+- **Data Crawling**: Scrapy(python)
 - **Deployment**: AWS EC2
 - **Containerization**: Docker, Docker-Compose
 
@@ -31,7 +31,7 @@ https://climbing-consonant-0d5.notion.site/Elasticsearch-6ce03943b83c472380229c6
 
 ## 데이터 처리 워크플로우
 
-1. **데이터 수집**: KOBIS에서 영화 정보를 수집하여 Elasticsearch에 인덱싱.
+1. **데이터 수집**: KOBIS데이터 기반으로 Naver 영화 수집(크롤링)
 2. **데이터 전처리**: NLP로 리뷰 데이터 토큰화 및 인코딩.
 3. **모델 학습**: LSTM 모델을 사용하여 긍/부정 리뷰 분류.
 4. **분석 데이터 인덱싱**: 예측된 긍/부정 리뷰와 명사 추출 데이터를 Elasticsearch에 인덱싱.
