@@ -24,20 +24,29 @@
 
 ---
 
+## 데이터 처리 워크플로우
+
+1. **데이터 수집**: KOBIS에서 영화 정보를 수집하여 Elasticsearch에 인덱싱.
+2. **데이터 전처리**: NLP로 리뷰 데이터 토큰화 및 인코딩.
+3. **모델 학습**: LSTM 모델을 사용하여 긍/부정 리뷰 분류.
+4. **분석 데이터 인덱싱**: 예측된 긍/부정 리뷰와 명사 추출 데이터를 Elasticsearch에 인덱싱.
+
+---
+
+## UI / 기능 설명
+
+- **검색 기능**: 검색어 포함 제목 검색.
+- **캐러셀**: 장르별 추천 영화 캐러셀.
+- **자동 완성 기능**: 검색어 입력 시 자동 완성 및 하이라이트 표시.
+- **WordCloud**: 영화의 키워드로 구성된 WordCloud 제공.
+
+---
+
 ## Work Flow
 
 ### 클라이언트 사용자
 
 ![클라이언트 사용자](https://lh7-us.googleusercontent.com/wJLL1Wuv6xCocYX3dbvfKl0LIMvwRy_c3Ngi1QsPMMxVgAC8BU526g82DNq8g-ALlm1JqdZYyCnBjArNyAOVgw5GMCtuQaVL04MTc9_Ujr0nhtW1YbS60QEFf4ciYhXCJto3Vm2hjiyNGxG1_yT1Mb4)
-
-### 데이터 인덱싱
-
-1. **기본 영화 정보**: KOBIS에서 엑셀 파일을 읽어 영화 코드를 수집하여 crwl index에 저장.
-2. **Server에서 영화 코드 수집**: 수집된 영화 코드를 Elasticsearch에 저장.
-3. **크롤링**: Crawler 프로그램이 영화 코드로 영화 데이터를 수집.
-5. **Elasticsearch 색인**: Logstash로 전달된 데이터를 Elasticsearch에 색인.
-
-![데이터 인덱싱](https://lh7-us.googleusercontent.com/WWzFjvD3Wr9GxbC7nqb59IMShKNa_ddl-yRw5M9f79JJIt3OgfKt_i2SLoYYipktf6p1AjsKzenxGxtwwbphnLbF_sfbzdkDXR0T1yQ4GSYyjFZ9ULXOOY8dJrSmA5rYZqJQH4KXMsjGqG7NY0gAQxI)
 
 ---
 
@@ -74,51 +83,11 @@
 
 ---
 
-## 개발 환경
-
-- **Docker 컨테이너 구성**: client, server, nginx, Elasticsearch를 각각 docker-compose로 설정.
-- **Nginx 설정**: 포트 3000번을 통해 client 요청을 받고, API 요청은 서버(4000번 포트)로 포워딩.
-  
-```yml
-# docker-compose.dev.yml 예시
-version: '3.7'
-services:
-  nginx:
-    image: nginx
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-  elasticsearch:
-    image: elasticsearch
-    environment:
-      - discovery.type=single-node
-  # 기타 서비스 설정 추가...
-```
-
 ## 배포 환경
 
 - **AWS EC2**: 메모리 제한으로 인해 Elasticsearch만 Docker 컨테이너로 배포.
   
 ![배포 환경](https://lh7-us.googleusercontent.com/M8-DNXPCs9mHwFOo_s4yiztUk4PnATn2LFuiSXEqAR-t7_Qk-6QeRXpqpyoAvSvkRW3MhoQZ4UBsykngVay2zO9xxSHebgrHmIsf63uOb9PAegiW3oSx2UKpFn52isysMCWHKbBagqzfFy4UhhwDphM)
-
----
-
-## 데이터 처리 워크플로우
-
-1. **데이터 수집**: KOBIS에서 영화 정보를 수집하여 Elasticsearch에 인덱싱.
-2. **데이터 전처리**: NLP로 리뷰 데이터 토큰화 및 인코딩.
-3. **모델 학습**: LSTM 모델을 사용하여 긍/부정 리뷰 분류.
-4. **분석 데이터 인덱싱**: 예측된 긍/부정 리뷰와 명사 추출 데이터를 Elasticsearch에 인덱싱.
-
----
-
-## UI / 기능 설명
-
-- **검색 기능**: 검색어 포함 제목 검색.
-- **캐러셀**: 장르별 추천 영화 캐러셀.
-- **자동 완성 기능**: 검색어 입력 시 자동 완성 및 하이라이트 표시.
-- **WordCloud**: 영화의 키워드로 구성된 WordCloud 제공.
 
 ---
 
